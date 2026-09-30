@@ -126,7 +126,7 @@ for (i.spec  in SVSPP.columns) {      # set to 4:74 for final run
       plot_index[ip,3]<-SVSPP.sel
       plot_index[ip,4]<-common
       plot_index[ip,5]<-SEASON.sel
-      plot_index[ip,6]<-"COMPARE MEANS"
+      plot_index[ip,6]<-"MEANS (POST, ORIGINAL)"
      # plot_index[[ip]]<-ptitle
       plot(x1+.1,y1, ylim=c(0,ymax), main=ptitle, cex.main=1.5, xlab="Year", ylab="Ave Wt/Tow (kg)")
       arrows(x1+.1, y1- 2*y1.err, x1+.1, y1 + 2*y1.err, length = 0.05, angle = 90, code = 3, col="black")
@@ -175,7 +175,7 @@ for (i.spec  in SVSPP.columns) {      # set to 4:74 for final run
       plot_index[ip,3]<-SVSPP.sel
       plot_index[ip,4]<-common
       plot_index[ip,5]<-SEASON.sel
-      plot_index[ip,6]<-"BOOTSTRAP VAR RATIO"
+      plot_index[ip,6]<-"RATIO BOOT VAR: ORIG/POOLED"
       plot(x1,y5/y4, xlab="year", main=ptitle, cex.main=1.5,
            ylab="Ratio Ori/Pooled Var" )
       abline(h=1, col="red")
@@ -190,7 +190,7 @@ for (i.spec  in SVSPP.columns) {      # set to 4:74 for final run
       plot_index[ip,3]<-SVSPP.sel
       plot_index[ip,4]<-common
       plot_index[ip,5]<-SEASON.sel
-      plot_index[ip,6]<-"COMPARE SE"
+      plot_index[ip,6]<-"SE (BOOT POOL, POST STRAT)"
       plot(y6,y7, xlab="Boot.pool.SE", ylab="Post Strat.SE", main=ptitle,
            cex.main=1.5)
       abline(a=0, b=1, col="red")
@@ -254,7 +254,7 @@ for (i.spec  in SVSPP.columns) {      # set to 4:74 for final run
         plot_index[ip,3]<-SVSPP.sel
         plot_index[ip,4]<-common
         plot_index[ip,5]<-SEASON.sel
-        plot_index[ip,6]<-"SMOOTH EST - RESTRAT"
+        plot_index[ip,6]<-"SMOOTH EST - POSTSTRAT"
         plot(x1,y3,xlab="Year", ylab="mean Wt (Post)",  main=ptitle,cex.main=1.5)
         pspl.post=smooth.Pspline(x1, y3, df=7, method=2)
         lines(pspl.post$x,pspl.post$ysmth, col="red")
@@ -318,7 +318,7 @@ for (i.spec  in SVSPP.columns) {      # set to 4:74 for final run
       plot_index[ip,3]<-SVSPP.sel
       plot_index[ip,4]<-common
       plot_index[ip,5]<-SEASON.sel
-      plot_index[ip,6]<-"DESIGN EFFECT - RESTRAT"
+      plot_index[ip,6]<-"DESIGN EFFECT - REVISED"
       plot(x1,y13, xlab="Year", ylab="Design Effect %: Alloc(blue), Strat(red)", main=ptitle, type="b",
            cex.main=1.5, ylim=c(min(y11, y12, y13), max(y11,y12, y13)))
       lines(x1,y12, col="red")
