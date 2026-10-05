@@ -20,6 +20,10 @@ ui <- navbarPage(
                h4("Explore Plots by Filtering."),
                p("Select a species and wait for all plots to populate before making further refinements. Plot loading is slow for first rendering but loads faster on recall. Leave Season and Descriptor blank to include all."),
                
+               selectInput("response", "Response Variable:",
+                           choices = sort(unique(plot_index$RESPONSE)),
+                           multiple = FALSE),
+               
                selectInput("common", "Common Name:",
                            choices = c("Choose...", sort(unique(plot_index$COMMON))),
                            multiple = FALSE),
@@ -92,6 +96,10 @@ server <- function(input, output, session) {
   # 1. Filter the plot_index based on user selections
   filtered_figs <- reactive({
     df <- plot_index
+    
+    if (!is.null(input$response) && length(input$response) > 0) {
+      df <- df %>% filter(RESPONSE %in% input$response)
+    }
     
     if (!is.null(input$common) && length(input$common) > 0) {
       df <- df %>% filter(COMMON %in% input$common)
